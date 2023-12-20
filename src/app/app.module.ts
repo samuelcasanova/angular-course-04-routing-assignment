@@ -29,8 +29,9 @@ import { RouterModule } from '@angular/router';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'users', component: UsersComponent },
-      { path: 'servers', component: ServersComponent },
-      { path: 'users/:id', component: UserComponent }
+      { path: 'servers', component: ServersComponent, children: [
+        { path: ':id', component: ServerComponent }
+      ]},
     ])
   ],
   providers: [ServersService],
