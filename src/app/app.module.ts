@@ -30,7 +30,8 @@ import { RouterModule } from '@angular/router';
       { path: '', component: HomeComponent },
       { path: 'users', component: UsersComponent },
       { path: 'servers', component: ServersComponent, children: [
-        { path: ':id', component: ServerComponent }
+        { path: ':id', component: ServerComponent },
+        { path: ':id/edit', component: EditServerComponent }
       ]},
     ])
   ],

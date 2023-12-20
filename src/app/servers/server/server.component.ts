@@ -10,14 +10,19 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class ServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
+  allowEdit: boolean
 
   constructor(private serversService: ServersService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.server = this.serversService.getServer(1);
     this.route.params.subscribe((params: Params) => {
       const serverId = +params['id']
       this.server = this.serversService.getServer(serverId)
+      this.allowEdit = serverId === 3
     })
+  }
+
+  onEdit() {
+    this.router.navigate(['edit'], { relativeTo: this.route })
   }
 }
